@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using User.Feedback.Common;
 
@@ -7,6 +8,6 @@ namespace User.Feedback.Client.BusinessObjects
     {
         void TellUserFeedback(UserFeedback userFeedback);
 
-        Task<Messages.UserFeedbackCollectionResponse> AskUserFeedbackCollection();
+        Task<IList<UserFeedback>> AskUserFeedbackCollection();
     }
 }

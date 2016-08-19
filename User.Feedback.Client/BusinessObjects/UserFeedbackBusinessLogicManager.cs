@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using User.Feedback.Common;
 
@@ -15,7 +16,7 @@ namespace User.Feedback.Client.BusinessObjects
             throw new NotImplementedException();
         }
 
-        public Task<Messages.UserFeedbackCollectionResponse> AskUserFeedbackCollection()
+        Task<IList<UserFeedback>> IUserFeedbackBusinessLogicManager.AskUserFeedbackCollection()
         {
             throw new NotImplementedException();
         }

@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB149B22-1865-4433-B43E-ABF9F9E7CFDD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2617EEC3-0FA4-4755-B028-093C15468712}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>User.Feedback.Central</RootNamespace>
-    <AssemblyName>User.Feedback.Central</AssemblyName>
+    <RootNamespace>User.Feedback.Microservice</RootNamespace>
+    <AssemblyName>User.Feedback.Microservice</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -63,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,25 +73,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Build\UserFeedbackFactory.cs" />
+    <Compile Include="Logic\IUserFeedbackBusinessLogic.cs" />
+    <Compile Include="Logic\UserFeedbackController.cs" />
+    <Compile Include="Persistence\IUserFeedbackPersistence.cs" />
+    <Compile Include="Persistence\UserFeedbackMemoryPersistence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Run\UserFeedbackMicroservice.cs" />
+    <Compile Include="Run\UserFeedbackRunner.cs" />
+    <Compile Include="Services\IUserFeedbackRestService.cs" />
+    <Compile Include="Services\UserFeedbackRestService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="config.yaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\User.Feedback.Common\User.Feedback.Common.csproj">
-      <Project>{5CD4037E-E5FD-4958-9016-35C06B3E5443}</Project>
-      <Name>User.Feedback.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserFeedback.Microservice\User.Feedback.Microservice.csproj">
-      <Project>{2617eec3-0fa4-4755-b028-093c15468712}</Project>
-      <Name>User.Feedback.Microservice</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

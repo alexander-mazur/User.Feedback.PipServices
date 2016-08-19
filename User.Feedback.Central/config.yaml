@@ -1,0 +1,31 @@
+﻿---
+logs:
+    descriptor:
+        type: "console"
+    options:
+        "level": 10
+
+counters:
+    descriptor:
+        type: "log"
+    options:
+        timeout: 10000
+
+persistence:
+    descriptor:
+        group: "UserFeedback"
+        type: "memory"
+
+controllers:
+  - descriptor:
+        group: "UserFeedback"
+
+services:
+  - descriptor:
+      group: "UserFeedback"
+      type: "rest"
+      version: "1.0"
+    endpoint:
+      protocol: "http"
+      host: "0.0.0.0"
+      port: 3000
